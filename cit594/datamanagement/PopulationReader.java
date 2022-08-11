@@ -1,4 +1,4 @@
-package edu.upenn.cit594.datamanagement;
+ppackage edu.upenn.cit594.datamanagement;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -29,6 +29,8 @@ public class PopulationReader extends Reader{
 		    	}
 		    	 String[] data = line.split(",");
 			     String zip = data[0];
+			     int last = zip.lastIndexOf("\"");
+			     zip = zip.substring(1, last);
 			     int pop = Integer.parseInt(data[1]);
 			     Pops.add(new Population(zip,pop));
 			}	

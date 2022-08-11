@@ -9,6 +9,8 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import edu.upenn.cit594.datamanagement.CovidComparatorr;
+import edu.upenn.cit594.datamanagement.CovidReader;
 import edu.upenn.cit594.datamanagement.PopulationReader;
 import edu.upenn.cit594.logging.Logger;
 import edu.upenn.cit594.processor.CheckExtension;
@@ -21,7 +23,10 @@ public class Main {
 		
 		String pattern =  "^--(?<name>.+?)=(?<value>.+)$";
 		Pattern r = Pattern.compile(pattern);
+		
+		/* Arraylist contaning already loaded input File*/
 		List<String> used = new ArrayList<String>();
+		/* Arraylist contaning proper Filenames used to compare with input files*/
 		List<String> properNames = new ArrayList<String>();
 		properNames.add("population");
 		properNames.add("log");
@@ -101,6 +106,7 @@ public class Main {
 						e.printStackTrace();
 					}
 				}
+			
 				
                 else if(m.group(1).equals("properties")) {
                 	try {
@@ -117,9 +123,9 @@ public class Main {
 						}	
 					} catch(Exception e) {
 						e.printStackTrace();
-					}
 					
 				}
+                }
 				
 				/* store the valid data set */
 				if(!m.group(1).equals("log")) {
@@ -138,9 +144,11 @@ public class Main {
 			
 		}
 		
-		
+		/* initialize the processor */
 		Processor processor = new Processor(dataset);
 		processor.setPopReader(new PopulationReader(filenames.get("population")));
+		processor.setCovidReader(new CovidReader(filenames.get("covid")));
+		
 		/* run the user interface function */
 		Ui ui = new Ui(processor);
 		

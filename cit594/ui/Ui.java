@@ -34,8 +34,34 @@ public class Ui {
 	        		processor.PrintTotalPop();
 	        		break;
 	        	case "3":
-	        		System.out.println("Wait to implement");
+	        		String choice= "";
+	        		String data = "";
+	        		boolean choice_start = true;
+	        		while(choice_start) {
+	        			System.out.println("Please specify fully vaccinations or partial vaccinations by typing: 'partial' 'full'");
+		        		choice = scan.nextLine();
+		        		if(!choice.equals("partial")&&!choice.equals("full")) {
+		        			System.out.println("Please type a valid indicator");
+		        		}else {
+		        			choice_start = false;
+		        		}
+	        		}
+	        		
+	        		boolean data_start = true;
+	        		while(data_start) {
+	        			System.out.println("Please specify the data");
+		        		data = scan.nextLine();
+		        		if(!processor.checkdata(data)) {
+		        			System.out.println("Typed data out of range or in Wrong format");
+		        		}else {
+		        			data_start = false;
+		        		}
+	        		}
+	        		
+	        		processor.PrintVaccination(choice, data);
 	        		break;
+	        		
+	        		
 	        	case "4":
 	        		System.out.println("Wait to implement");
 	        		break;
@@ -46,8 +72,10 @@ public class Ui {
 	        		System.out.println("Wait to implement");
 	        		break;
 	        }
+	        	
 			
 		}
+		
 	}
 		
         
@@ -64,5 +92,4 @@ public class Ui {
 	}
 	
 	}
-
 

@@ -79,6 +79,9 @@ public class Ui {
 	        	case "6":
 	        		System.out.println("Wait to implement");
 	        		break;
+			case "7":
+	        		System.out.println("Wait to implement");
+	        		break;		
 	        }
 	        	
 			

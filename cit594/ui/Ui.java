@@ -23,6 +23,14 @@ public class Ui {
 	        Scanner scan = new Scanner(System.in);
 	        
 	        	input = scan.nextLine();
+	        	List<String> validinput = new ArrayList<>(
+	        			List.of("1","2","3","4","5","6","7"));
+	        	
+	        	if(!validinput.contains((input))) {
+	        		System.out.println("Please type a valid input. Single number 1-7 only and must without any whitespace.");
+	        		continue;
+	        	}
+	        	
 	        	switch(input) {
 	        	case "0":
 	        		start = false;
@@ -49,7 +57,7 @@ public class Ui {
 	        		
 	        		boolean data_start = true;
 	        		while(data_start) {
-	        			System.out.println("Please specify the data");
+	        			System.out.println("Please specify the data. Form ####-##-##");
 		        		data = scan.nextLine();
 		        		if(!processor.checkdata(data)) {
 		        			System.out.println("Typed data out of range or in Wrong format");

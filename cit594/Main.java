@@ -149,8 +149,11 @@ public class Main {
 		processor.setPopReader(new PopulationReader(filenames.get("population")));
 		processor.setCovidReader(new CovidReader(filenames.get("covid")));
 		
+		////////// NEW CHANGE at Aug 14 /////////////////
+		PropertyProcessor prop_processor = new PropertyProcessor(new PropertiesReader(filenames.get("property")));
+		
 		/* run the user interface function */
-		Ui ui = new Ui(processor);
+		Ui ui = new Ui(processor, prop_processor);//// new change st aug 14 (add one arguement: prop_processor)/////////
 		
 		
 
